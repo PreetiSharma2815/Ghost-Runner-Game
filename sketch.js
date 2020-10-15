@@ -21,7 +21,7 @@ function preload() {
 function setup() {
   createCanvas(600, 600);
 
-  //spookySound.loop();
+  spookySound.loop();
   tower = createSprite(300, 300);
   tower.addImage("tower", towerImg);
   tower.velocityY = 1;
@@ -148,7 +148,8 @@ function spawnDoors() {
     door.velocityY = 1;
     climber.velocityY = 1;
     invisibleBlock.velocityY = 1;
-
+    
+    //adjust ghost depth
     ghost.depth = door.depth;
     ghost.depth += 1;
 
