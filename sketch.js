@@ -49,7 +49,11 @@ function draw() {
     ghost.scale = 0.3;
     ghost.addImage("ghost", ghostImg);
     ghost.velocityY = 0;
-
+    
+    fill("black");
+    textSize(20)
+    text("Press the Space To Climb the Doors",200,50)
+    
     if (keyDown("space")) {
       gameState = "play";
     }
@@ -102,6 +106,7 @@ function draw() {
   }
 
   if (gameState === "end") {
+    ghost.destroy();
     doorsGroup.destroyEach();
     climbersGroup.destroyEach();
     invisibleBlockGroup.destroyEach();
@@ -120,11 +125,15 @@ function draw() {
 }
 
 function spawnDoors() {
-  //write code here to spawn the doors in the tower
-  if (frameCount % 100 === 0) {
+  //code here to spawn the doors in the tower
+  
+  if (frameCount % 300 === 0) {
     var door = createSprite(200, -50);
     var climber = createSprite(200, 10);
-    var invisibleBlock = createSprite(200, 15);    
+    var invisibleBlock = createSprite(200, 15);
+    
+    invisibleBlock.visible=false;
+    
     invisibleBlock.width = climber.width;
     invisibleBlock.height = 2;
     invisibleBlock.setCollider("rectangle",0,0,climber.width/2,2)
@@ -150,9 +159,9 @@ function spawnDoors() {
 
     //add each door to the group
     doorsGroup.add(door);
-    //invisibleBlock.debug = true;
     climbersGroup.add(climber);
     invisibleBlockGroup.add(invisibleBlock);
+    //invisibleBlock.debug = true;
   }
 }
 
@@ -161,6 +170,7 @@ function restart() {
   ghost.x = 400;
   ghost.y = 250;
   ghost.velocityY= 0;
+  
   ghost.addImage("ghost", ghostImg);
   
   gameState = "start";
