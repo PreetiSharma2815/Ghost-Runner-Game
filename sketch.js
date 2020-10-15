@@ -52,7 +52,8 @@ function draw() {
     
     fill("black");
     textSize(20)
-    text("Press the Space To Climb the Doors",200,50)
+    stroke("black")
+    text("Press the 'SpaceBar' To Climb the Doors :)",115,50)    
     
     if (keyDown("space")) {
       gameState = "play";
