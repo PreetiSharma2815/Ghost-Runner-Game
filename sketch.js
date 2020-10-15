@@ -34,7 +34,7 @@ function setup() {
   ghost.scale = 0.3;
   ghost.addImage("ghost", ghostImg);
 
-  gameOver = createSprite(300, 350);
+  gameOver = createSprite(width/2, height/2);
   gameOver.visible = false;
 }
 
@@ -49,6 +49,7 @@ function draw() {
     ghost.scale = 0.3;
     ghost.addImage("ghost", ghostImg);
     ghost.velocityY = 0;
+    ghost.visible=true;
     
     fill("black");
     textSize(20)
@@ -71,7 +72,7 @@ function draw() {
 
     ghost.scale = 0.3;
     ghost.addImage("ghost", ghostImg);
-
+    ghost.visible=true;
     //control ghost with right and left arrow
     if (keyDown("left_arrow")) {
       ghost.x = ghost.x - 3;
@@ -107,7 +108,7 @@ function draw() {
   }
 
   if (gameState === "end") {
-    ghost.destroy();
+    ghost.visible=false;
     doorsGroup.destroyEach();
     climbersGroup.destroyEach();
     invisibleBlockGroup.destroyEach();
